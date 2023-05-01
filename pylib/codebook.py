@@ -22,7 +22,7 @@ VALUE COUNT
 
 def get_codebook_text(pkg):
     fn = pkg.reference('gss_2021_codes').resolved_url.get_resource().get_target().fspath
-
+    print("Codebook Path", fn)
     text = textract.process(fn).decode('latin1')
 
     return text.splitlines()

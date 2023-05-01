@@ -1,0 +1,88 @@
+# Processing Instructions
+
+You will be processing the descriptions of variables in a survey dataset. Each
+description will include the name of the variable and the description provided
+by the dataset's creators. However, some of the descriptions are incomplete.
+Sometimes an important part of the description of one variable is included in a
+previoud variable. For instance, consider these variable descriptions:
+
+    endsmeet: Thinking of your household's total income, including all the
+    sources of income of all the members who contribute to it, how difficult or
+    easy is it currently for your household to make ends meet?
+
+    opwlth: (For each of these, please tell me how important you think it is
+    for getting ahead in life ...) How important is coming from a wealthy
+    family?
+
+    oppared : (For each of these, please tell me how important you think it is
+    for getting ahead in life ...) How important is having well-educated
+    parents?
+
+    opeduc: (For each of these, please tell me how important you think it is
+    for getting ahead in life ...) How important is having a good education
+    yourself?
+
+The phrase in parentheses in opwlth, oppared and opeduc refers to the first
+part of the description of endsmeet, so the full descriptions for those
+variables should be:
+
+    opwlth: Thinking of your household's total income, including all the
+    sources of income of all the members who contribute to it, how important do
+    you think it is for getting ahead in life to come from a wealthy family?
+
+    oppared: Thinking of your household's total income, including all the
+    sources of income of all the members who contribute to it, how important do
+    you think it is for getting ahead in life to have well-educated parents?
+
+    opeduc: Thinking of your household's total income, including all the
+    sources of income of all the members who contribute to it, how important do
+    you think it is for getting ahead in life to have a good education yourself?
+
+Other descriptions do not depend on prior descriptions, byt should be
+re-written to be easier to read. You should also re-write descriptions so that
+they:
+
+    * Do not have parenthetical expressions. For instance, "(If you had other
+      partners, does this describe any of them?...) Close personal friend"
+      should be re-written as "If you had other partners, does this describe
+      any of them? A Close personal friend"
+      
+    * Convert references to "R's" to "Respondent's"
+    
+    * Remove instructions to the interviewer. For instance, in "(ASK EVERYONE
+      WITH ANY RELIGIOUS PREFERENCE NAMED IN RELIG) Would you call yourself a
+      strong (PREFERENCE NAMED IN RELIG) or a not very strong (PREFERENCE NAMED
+      IN RELIG)?" The parentetical expressions are instructions for the
+      interviewer and should be removed.
+
+    * Convert uppercase and mixed case descriptions into nomal stentence case.
+
+    * Make other gramatical improvements to make the description easier to read
+    without losing the meaning
+
+
+# Formatting Instructions.
+
+You will recieve the variables descriptions as a a list of multiple
+descriptions, one per line. Each line will start with a variable name, then a
+":", then the description
+
+Return your re-writes in JSONL format, with each line being a JSON dictionary
+having these keys:
+  variable: the name of the variable
+  desc: the description of the variable.
+
+For example, here is valid output for an input with two variables.
+
+    {{"variable": "example_variable","desc": "Description of the example variable." }}
+    {{"variable": "example_variable2", "desc": "Description of the second example variable."}}
+
+
+
+
+# Input Variable Descriptions
+
+{descriptions}
+
+# Output variable descriptions
+
